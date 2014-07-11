@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package>
+  <name>libSphero</name>
+  <version>0.0.0</version>
+  <description>A catkin compatible version of the libSphero package</description>
+
+  <maintainer email="akzeac@gmail.com">Antonio Zea</maintainer>
+
+  <license>LGPLv3</license>
+
+  <!-- Optional attribute type can be: website, bugtracker, or repository -->
+  <url type="repository">http://github.com/isaskit/libSphero.git</url>
+  <url type="repository">http://github.com/isaskit/libSphero.git</url>
+
+  <author email="akzeac@gmail.com">Antonio Zea</author>
+  <author email="jane.doe@example.com">Matthew Balch</author>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>bluetooth</build_depend>
+  <run_depend>bluetooth</run_depend>
+  <!--   <test_depend>gtest</test_depend> -->
+
+  <export>
+  </export>
+</package>
