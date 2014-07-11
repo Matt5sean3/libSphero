@@ -15,13 +15,15 @@ SET(CMAKE_BUILD_TYPE Release)
 
 SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -std=c++0x")
 
+INCLUDE_DIRECTORIES(include)
+
 ADD_LIBRARY(
 	Sphero
 	SHARED
-	CommandMessage.cpp
-	ResponseMessage.cpp
-	Robot.cpp
-	Macro.cpp
+	src/CommandMessage.cpp
+	src/ResponseMessage.cpp
+	src/Robot.cpp
+	src/Macro.cpp
 )
 
 TARGET_LINK_LIBRARIES(
@@ -30,5 +32,5 @@ TARGET_LINK_LIBRARIES(
 )
 
 INSTALL_TARGETS(/lib Sphero)
-INSTALL_FILES(/include libSphero.h)
+INSTALL_FILES(/include include/libSphero.h)
 
