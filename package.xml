@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>libSphero</name>
+  <name>libsphero</name>
   <version>0.0.0</version>
   <description>A catkin compatible version of the libSphero package</description>
 
