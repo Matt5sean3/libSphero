@@ -1,3 +1,10 @@
+# Locate SWIG
+INCLUDE(FindSWIG)
+INCLUDE(${SWIG_USE_FILE})
+
+IF(${SWIG_VERSION} VERSION_GREATER 3.0.0)
+MESSAGE(STATUS "Creating SWIG bindings")
+
 # List the source files
 
 # Options for swig bindings
@@ -32,4 +39,6 @@ SET(SWIG_SOURCE_FILE ${PROJECT_SOURCE_DIR}/sphero.i)
 IF(PYTHON_SWIG)
 ADD_SUBDIRECTORY(Python)
 ENDIF(PYTHON_SWIG)
-
+ELSE(${SWIG_VERSION} VERSION_GREATER 3.0.0)
+MESSAGE(WARNING "Not creating SWIG bindings, need at least version 3.0.0")
+ENDIF(${SWIG_VERSION} VERSION_GREATER 3.0.0)
