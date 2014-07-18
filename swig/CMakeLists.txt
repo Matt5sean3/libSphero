@@ -26,7 +26,7 @@ OPTION(PYTHON_SWIG "Compile SWIG Python bindings" ON)
 #OPTION(CLISP_SWIG "Compile CLISP bindings" ON)
 #OPTION(UFFI_SWIG "Compile Common Lisp with UFFI bindings" ON)
 #OPTION(CFFI_SWIG "Compile Common Lisp with CFFI bindings" ON)
-#OPTION(R_SWIG "Compile R bindings" ON)
+OPTION(R_SWIG "Compile R bindings" ON)
 #OPTION(OCTAVE_SWIG "Compile Octave bindings" ON)
 #OPTION(GO_SWIG "Compile Go bindings" ON)
 #OPTION(D_SWIG "Compile D bindings" ON)
@@ -34,11 +34,17 @@ OPTION(PYTHON_SWIG "Compile SWIG Python bindings" ON)
 
 # Generate swig bindings for various languages
 
-SET(SWIG_SOURCE_FILE ${PROJECT_SOURCE_DIR}/sphero.i)
+SET(SWIG_SOURCE_FILE ../sphero.i)
+SET(CMAKE_SWIG_FLAGS "-c++")
 
 IF(PYTHON_SWIG)
 ADD_SUBDIRECTORY(Python)
 ENDIF(PYTHON_SWIG)
+IF(R_SWIG)
+ADD_SUBDIRECTORY(R)
+ENDIF(R_SWIG)
+
 ELSE(${SWIG_VERSION} VERSION_GREATER 3.0.0)
 MESSAGE(WARNING "Not creating SWIG bindings, need at least version 3.0.0")
 ENDIF(${SWIG_VERSION} VERSION_GREATER 3.0.0)
+

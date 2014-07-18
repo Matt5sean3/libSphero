@@ -11,3 +11,5 @@
 *.la
 *.a
 build
+# vim Swap Files
+.*.swp
