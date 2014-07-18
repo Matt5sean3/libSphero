@@ -1,8 +1,36 @@
+SET(BIND_R ON)
+# Check for R
+FIND_PROGRAM(R_FOUND R)
+
+# Try to locate the R executable
+IF(NOT R_FOUND)
+MESSAGE(STATUS "Could not locate R executable")
+SET(BIND_R OFF)
+ENDIF(NOT R_FOUND)
+
+# Try to locate R's libraries
 FIND_LIBRARY(R_LIBS R)
-FIND_PATH(R_INCLUDE NAMES Rdefines.h HINTS /usr/include /usr/share/R/include)
+IF(NOT R_LIBS)
+MESSAGE(STATUS "Could not locate R libraries")
+SET(BIND_R OFF)
+ENDIF(NOT R_LIBS)
+
+# Try to locate R's include directory
+IF(R_FOUND)
+EXECUTE_PROCESS(COMMAND R RHOME OUTPUT_VARIABLE R_HOME)
+FIND_PATH(R_INCLUDE NAMES Rdefines.h HINTS ${R_HOME}/include)
 SET_SOURCE_FILES_PROPERTIES(${SWIG_SOURCE_FILE} PROPERTIES CPLUSPLUS ON)
+IF(NOT R_INCLUDE)
+MESSAGE(STATUS "Could not locate R include directory")
+SET(BIND_R OFF)
+ENDIF(NOT R_INCLUDE)
+ENDIF(R_FOUND)
 
+IF(BIND_R)
 INCLUDE_DIRECTORIES(${R_INCLUDE})
-
 SWIG_ADD_MODULE(Rsphero r ${SWIG_SOURCE_FILE} ${SOURCE_FILE_LIST})
-SWIG_LINK_LIBRARIES(Rsphero ${R_LIBS})
+SWIG_LINK_LIBRARIES(Rsphero ${R_LIBS} ${PROJECT_LIBRARIES})
+MESSAGE(STATUS "R bindings will be created")
+ELSE(BIND_R)
+MESSAGE(STATUS "Unable to create R bindings")
+ENDIF(BIND_R)
