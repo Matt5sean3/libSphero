@@ -26,7 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <sys/socket.h>
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/rfcomm.h>
-#include "libSphero.h"
+#include "libSphero/Robot.h"
+#include "libSphero/Macro.h"
 
 namespace LibSphero {
 
