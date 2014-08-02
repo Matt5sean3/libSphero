@@ -46,7 +46,7 @@ std::ostream &operator<<(std::ostream &os, Code code);
 std::ostream &operator<<(std::ostream &os, InformationCode code);
 
 /** Response message class */
-struct Message {
+class Message {
 private:
 	ByteArrayBuffer packet;
 	Code code;

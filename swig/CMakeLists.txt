@@ -35,7 +35,7 @@ OPTION(OCTAVE_SWIG "Compile Octave bindings" ON)
 # Generate swig bindings for various languages
 
 SET(SWIG_SOURCE_FILE ../sphero.i)
-SET(CMAKE_SWIG_FLAGS "-c++")
+SET(CMAKE_SWIG_FLAGS "")
 
 IF(PYTHON_SWIG)
 ADD_SUBDIRECTORY(Python)

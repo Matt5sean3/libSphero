@@ -3,7 +3,8 @@
 #include "Command.h"
 namespace LibSphero {
 
-struct Macro {
+class Macro {
+public:
 	enum BlockSpecifier {
 		FACTORY = 0, USER = 1
 	};

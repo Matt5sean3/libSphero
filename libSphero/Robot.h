@@ -6,7 +6,8 @@
 
 namespace LibSphero {
 
-struct RobotState {
+class RobotState {
+public:
 	int heading;
 	uint8_t velocity;
 	uint8_t rotationRate;
@@ -17,7 +18,8 @@ struct RobotState {
 	bool stop;
 };
 
-struct IListener {
+class IListener {
+public:
 	virtual ~IListener() {}
 	virtual void onPacketReceived(const Response::Message &message) = 0;
 };

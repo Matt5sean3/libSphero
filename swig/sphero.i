@@ -1,12 +1,5 @@
 %module sphero
 
-%include "std_string.i"
-%include "inttypes.i"
-
-%{
-#include "libSphero.h"
-%}
-
 // Map the command message types
 %rename(PING_Command_Message) LibSphero::Command::MessageType::PING;
 %rename(VERSIONING_Command_Message) LibSphero::Command::MessageType::VERSIONING;
@@ -36,11 +29,6 @@
 %rename(INVALID_Command_Message) LibSphero::Command::MessageType::INVALID;
 %ignore LibSphero::Command::operator<<;
 %rename(Command_Message) LibSphero::Command::Message;
-%include "libSphero/Command.h"
-
-%{
-#include "libSphero/Response.h"
-%}
 
 // Map the error messages
 %rename(RESPONSE_CODE) LibSphero::Response::Code;
@@ -67,12 +55,17 @@
 
 // Rename command and response messages
 %rename(Response_Message) LibSphero::Response::Message;
-%include "libSphero/Response.h"
 
 %{
+#include "libSphero/Command.h"
+#include "libSphero/Response.h"
 #include "libSphero/Robot.h"
 #include "libSphero/Macro.h"
 %}
 
+%include "std_string.i"
+%include "inttypes.i"
+%include "libSphero/Command.h"
+%include "libSphero/Response.h"
 %include "libSphero/Robot.h"
 %include "libSphero/Macro.h"
